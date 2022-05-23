@@ -1,0 +1,13 @@
+<template>
+    <lightning-card>
+
+        <lightning-input class="binaryNum" type="string" name="binaryValue" label="Enter Binary Value"
+        placeholder="Type here..." onchange={handleBinaryChange}>
+        </lightning-input>
+
+        <template if:true={showDeciamlValue}> 
+            <h2>The Decimal value of '{binaryValue}' is: {decimalValue}</h2>
+        </template>
+       
+    </lightning-card>
+</template>
