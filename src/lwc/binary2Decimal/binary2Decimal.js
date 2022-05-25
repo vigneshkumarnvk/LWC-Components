@@ -8,7 +8,7 @@ export default class Binary2Decimal extends LightningElement {
     decimalValue;
 
     handleBinaryChange(event) {
-        var pattern = /^[a-zA-Z2-9!@#\$%\^\&*\)\(+=._-]+/;
+        var pattern = /[a-zA-Z2-9!@#\$%\^\&*\)\(+=._-]/g;
         //Getting the binary value
         let binaryNumber = this.template.querySelector('.binaryNum');
         this.binaryValue = binaryNumber.value;
@@ -20,10 +20,6 @@ export default class Binary2Decimal extends LightningElement {
             this.showDeciamlValue = false;
             binaryNumber.setCustomValidity("");
         }
-        // else if (this.reverseBinVal.length > 8) {
-        //     this.showDeciamlValue = false;
-        //     binaryNumber.setCustomValidity('Characters should not be greater than 8');
-        // } 
         else if (pattern.test(this.binaryValue)) {            
             this.showDeciamlValue = false;
             binaryNumber.setCustomValidity('Enter only 0\'s and 1\'s');
@@ -34,6 +30,7 @@ export default class Binary2Decimal extends LightningElement {
 
             //Calling the function which calculates Decimal Value
             this.decimalValue = calculateDecimal(this.reverseBinVal);
+
         }        
         binaryNumber.reportValidity();
 
